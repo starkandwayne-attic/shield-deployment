@@ -1,7 +1,7 @@
 ---
 properties:
   databases:
-    address: (( grab jobs.shield.networks.shield1.static_ips.[0] ))
+    address: (( grab jobs.shield.networks[0].static_ips.[0] ))
     databases:
     - citext: true
       name: shielddb
@@ -17,14 +17,14 @@ properties:
     agent:
       database:
         db: shielddb
-        host: (( grab jobs.shield.networks.shield1.static_ips.[0] ))
+        host: (( grab jobs.shield.networks[0].static_ips.[0] ))
         password: admin
         port: 5524
         username: shieldadmin
     daemon:
       database:
         db: shielddb
-        host: (( grab jobs.shield.networks.shield1.static_ips.[0] ))
+        host: (( grab jobs.shield.networks[0].static_ips.[0] ))
         password: admin
         port: 5524
         username: shieldadmin
