@@ -23,22 +23,22 @@ Quickstart
 
 To create a new site:
 
-  genesis new site NAME
+    genesis new site NAME
 
 To create a new environment
 
-  cd site-name/
-  genesis new environment NAME
+    cd site-name/
+    genesis new environment NAME
 
 To build the full BOSH manifest for an environment:
 
-  cd site-name/env-name
-  make manifest
+    cd site-name/env-name
+    make manifest
 
 ... and then deploy it:
 
-  cd site-name/env-name
-  make deploy
+    cd site-name/env-name
+    make deploy
 
 
 
