@@ -9,3 +9,5 @@ jobs:
     - {release: shield, name: postgres}
     - {release: shield, name: shield-daemon}
     - {release: shield, name: shield-agent}
+    - {release: shield, name: agent-pgtools}
+    - {release: shield, name: nginx}
