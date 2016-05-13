@@ -1,0 +1,11 @@
+---
+jobs:
+- name: shield
+  instances: 1
+  persistent_disk: 2048
+  resource_pool: (( param "Please define a resource pool for your SHIELD VMs (probably at the site level)" ))
+  networks:      (( param "Please define a network for your SHIELD VMs (probably at the environment level)" ))
+  templates:
+    - {release: shield, name: postgres}
+    - {release: shield, name: shield-daemon}
+    - {release: shield, name: shield-agent}

@@ -1,0 +1,30 @@
+---
+properties:
+  databases:
+    address: (( grab jobs.shield.networks.shield1.static_ips.[0] ))
+    databases:
+    - citext: true
+      name: shielddb
+      tag: shield
+    db_scheme: postgres
+    port: 5524
+    roles:
+    - name: shieldadmin
+      password: admin
+      tag: admin
+
+  shield:
+    agent:
+      database:
+        db: shielddb
+        host: (( grab jobs.shield.networks.shield1.static_ips.[0] ))
+        password: admin
+        port: 5524
+        username: shieldadmin
+    daemon:
+      database:
+        db: shielddb
+        host: (( grab jobs.shield.networks.shield1.static_ips.[0] ))
+        password: admin
+        port: 5524
+        username: shieldadmin
