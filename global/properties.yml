@@ -29,3 +29,4 @@ properties:
         port: 5524
         username: shieldadmin
       domain: (( grab jobs.shield.networks[0].static_ips[0] ))
+      name: (( concat name " S.H.I.E.L.D." ))
