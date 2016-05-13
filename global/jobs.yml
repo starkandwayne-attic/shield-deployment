@@ -11,3 +11,5 @@ jobs:
     - {release: shield, name: shield-agent}
     - {release: shield, name: agent-pgtools}
     - {release: shield, name: nginx}
+    - {release: toolbelt, name: toolbelt}
+    - {release: toolbelt, name: toolbelt-quick}
