@@ -20,6 +20,10 @@ properties:
       tag: sessions
 
   shield:
+    agent:
+      authorized_keys:
+      - (( param "Specify the SSH public key that the agent will use to allow daemons to talk to it" ))
+
     daemon:
       auth:
         basic_user: shield
@@ -37,6 +41,7 @@ properties:
         #      password: (( grab properties.databases.roles.1.password ))
         #      username: (( grab properties.databases.roles.1.name ))
 
+      host_key: (( param "Specify the SSH private key that the daemon will use to talk to the agents" ))
       database:
         db: (( grab properties.databases.databases.0.name ))
         host: (( grab properties.databases.address ))
