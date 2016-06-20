@@ -1,0 +1,15 @@
+---
+networks:
+- name: shield
+  type: manual
+  subnets:
+  - range: 10.244.28.0/24
+    gateway: 10.244.28.1
+    static:
+    - 10.244.28.2 - 10.244.28.60
+
+jobs:
+- name: shield
+  networks:
+  - name: shield
+    static_ips: (( static_ips 0, 1, 2, 3, 5 ))
