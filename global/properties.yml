@@ -31,14 +31,14 @@ properties:
         #  authorization: {orgs: (( param "Specify the list of github orgs/UAA groups that should be able to access shield" ))}
         #  sessions:
         #    db:
-        #      name: shieldsessions
+        #      name: (( grab properties.databases.databases.1.name ))
         #      host: (( grab properties.databases.address ))
         #      port: (( grab properties.databases.port ))
         #      password: (( grab properties.databases.roles.1.password ))
-        #      username: (( grab properties.databases.roles.1.username ))
+        #      username: (( grab properties.databases.roles.1.name ))
 
       database:
-        db: shielddb
+        db: (( grab properties.databases.databases.0.name ))
         host: (( grab properties.databases.address ))
         password: (( grab properties.databases.roles.0.password ))
         port: (( grab properties.databases.port ))
