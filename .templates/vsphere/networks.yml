@@ -1,1 +1,11 @@
---- {}
+---
+networks:
+- name: shield
+  type: manual
+  subnets: (( param "Specify your shield subnet" ))
+
+jobs:
+- name: shield
+  networks:
+  - name: shield
+    static_ips: (( static_ips 0 ))
