@@ -13,17 +13,17 @@ properties:
     port: 5524
     roles:
     - name: shieldadmin
-      password: (( vault meta.vault_prefix "db:password" ))
+      password: (( vault meta.vault_prefix "/db:password" ))
       tag: admin
     - name: shieldsessions
-      password: (( vault meta.vault_prefix "sessionsdb:password" ))
+      password: (( vault meta.vault_prefix "/sessionsdb:password" ))
       tag: sessions
 
   shield:
     daemon:
       auth:
         basic_user: shield
-        basic_password: (( vault meta.vault_prefix "webui:password" ))
+        basic_password: (( vault meta.vault_prefix "/webui:password" ))
         #oauth:
         #  provider: 'github' or 'uaa'
         #  key: oauth client key from provider - should go in vault
@@ -48,4 +48,4 @@ properties:
         port: (( grab properties.databases.port ))
         username: (( grab properties.databases.roles.0.name ))
       domain: (( grab jobs.shield.networks[0].static_ips[0] ))
-      name: (( vault meta.vault_prefix "daemon:name" ))
+      name: (( vault meta.vault_prefix "/daemon:name" ))

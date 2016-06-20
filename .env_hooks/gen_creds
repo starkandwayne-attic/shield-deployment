@@ -4,6 +4,6 @@ set -e
 
 echo "Generating credentials for S.H.I.E.L.D"
 safe gen ${VAULT_PREFIX}/webui password -- \
-     set ${VAULT_PREFIX}/daemon name="${DEPLOYMENT_SITE}-${ENVIRONMENT_NAME} S.H.I.E.L.D" \
+     set ${VAULT_PREFIX}/daemon name="${DEPLOYMENT_SITE}-${ENVIRONMENT_NAME} S.H.I.E.L.D" -- \
      gen ${VAULT_PREFIX}/db password -- \
      gen ${VAULT_PREFIX}/sessionsdb password > /dev/null
