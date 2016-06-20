@@ -6,27 +6,46 @@ properties:
     - citext: true
       name: shielddb
       tag: shield
+    - citext: true
+      name: sessionsdb
+      tag: sessions
     db_scheme: postgres
     port: 5524
     roles:
     - name: shieldadmin
-      password: admin
+      password: (( vault meta.vault_prefix "db:password" ))
       tag: admin
+    - name: shieldsessions
+      password: (( vault meta.vault_prefix "sessionsdb:password" ))
+      tag: sessions
 
   shield:
-    agent:
-      database:
-        db: shielddb
-        host: (( grab jobs.shield.networks[0].static_ips[0] ))
-        password: admin
-        port: 5524
-        username: shieldadmin
     daemon:
+      auth:
+        basic_user: shield
+        basic_password: (( vault meta.vault_prefix "webui:password" ))
+        #oauth:
+        #  provider: 'github' or 'uaa'
+        #  key: oauth client key from provider - should go in vault
+        #  secret: oauth client secret from provider - should go in vault
+        #  authorization_orgs:
+        #  - list of
+        #  - uaa groups
+        #  - or github orgs
+        #  - that should be able to access shield
+        #  sessions:
+        #    db:
+        #      name: shieldsessions
+        #      host: (( grab properties.databases.address ))
+        #      port: (( grab properties.databases.port ))
+        #      password: (( grab properties.databases.roles.1.password ))
+        #      username: (( grab properties.databases.roles.1.username ))
+
       database:
         db: shielddb
-        host: (( grab jobs.shield.networks[0].static_ips[0] ))
-        password: admin
-        port: 5524
-        username: shieldadmin
+        host: (( grab properties.databases.address ))
+        password: (( grab properties.databases.roles.0.password ))
+        port: (( grab properties.databases.port ))
+        username: (( grab properties.databases.roles.0.name ))
       domain: (( grab jobs.shield.networks[0].static_ips[0] ))
-      name: (( concat name " S.H.I.E.L.D." ))
+      name: (( vault meta.vault_prefix "daemon:name" ))
