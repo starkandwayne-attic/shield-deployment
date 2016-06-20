@@ -25,14 +25,10 @@ properties:
         basic_user: shield
         basic_password: (( vault meta.vault_prefix "/webui:password" ))
         #oauth:
-        #  provider: 'github' or 'uaa'
-        #  key: oauth client key from provider - should go in vault
-        #  secret: oauth client secret from provider - should go in vault
-        #  authorization_orgs:
-        #  - list of
-        #  - uaa groups
-        #  - or github orgs
-        #  - that should be able to access shield
+        #  provider: (( param "Choose an oauth provider type - 'github' or 'cloudfoundry'" ))
+        #  key: (( param "Specify the client key used to authenticate with the oauth provider" ))
+        #  secret: (( param "Specify the client secret used to authenticate with the oauth provider " ))
+        #  authorization: {orgs: (( param "Specify the list of github orgs/UAA groups that should be able to access shield" ))}
         #  sessions:
         #    db:
         #      name: shieldsessions
