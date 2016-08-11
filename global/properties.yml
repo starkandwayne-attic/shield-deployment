@@ -20,6 +20,7 @@ properties:
       tag: sessions
 
   shield:
+    provisioning_key: (( vault meta.vault_prefix "/provisioning_key:password" ))
     agent:
       autoprovision: (( concat "https://" properties.shield.daemon.domain ))
 
@@ -27,6 +28,8 @@ properties:
       auth:
         basic_user: shield
         basic_password: (( vault meta.vault_prefix "/webui:password" ))
+        api_keys:
+          autoprovision: (( vault meta.vault_prefix "/provisioning_key:password" ))
         #oauth:
         #  provider: (( param "Choose an oauth provider type - 'github' or 'cloudfoundry'" ))
         #  key: (( param "Specify the client key used to authenticate with the oauth provider" ))
