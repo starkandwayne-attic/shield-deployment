@@ -45,6 +45,7 @@ properties:
 
       ssh_private_key: (( param "Specify the SSH private key that the daemon will use to talk to the agents" ))
       database:
+        type: postgres
         db: (( grab properties.databases.databases.0.name ))
         host: (( grab properties.databases.address ))
         password: (( grab properties.databases.roles.0.password ))
