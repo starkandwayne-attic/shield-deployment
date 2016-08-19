@@ -1,0 +1,31 @@
+---
+meta:
+  az: (( param "What availability zone is SHIELD deployed to?" ))
+
+resource_pools:
+- name:     small
+  network:  shield
+  stemcell: (( grab meta.stemcell ))
+
+  cloud_properties:
+    instance_type: m1.medium
+    availability_zone: (( grab meta.az ))
+    root_disk:
+      size: 4
+
+
+compilation:
+  network: shield
+  reuse_compilation_vms: true
+  workers: 4
+
+  cloud_properties:
+    instance_type: m1.medium
+    availability_zone: (( grab meta.az ))
+    root_disk:
+      size: 8
+
+
+jobs:
+- name: shield
+  resource_pool: small
