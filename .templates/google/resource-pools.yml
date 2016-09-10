@@ -1,0 +1,27 @@
+---
+meta:
+  google:
+    zones:
+      z1: (( param "What Google zone is SHIELD deployed to?" ))
+
+resource_pools:
+- name:     small
+  network:  shield
+  stemcell: (( grab meta.stemcell ))
+
+  cloud_properties:
+      zone: (( grab meta.google.zones.z1 ))
+      machine_type: n1-standard-2
+
+compilation:
+  network: shield
+  reuse_compilation_vms: true
+  workers: 4
+
+  cloud_properties:
+    machine_type: n1-standard-4
+    zone: (( grab meta.google.zones.z1 ))
+
+jobs:
+- name: shield
+  resource_pool: small
